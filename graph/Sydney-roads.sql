@@ -27,10 +27,10 @@ INSERT INTO road VALUES
 	(0, 7, 208),   -- SYD -> Singleton
 	(1, 3, 40.7),  -- Katoomba -> Lithgow
 	(2, 3, 85.4),  -- Windsor -> Lithgow
-	(3, 4, 62.1),  -- Bahurst -> Orange
+	(3, 4, 62.1),  -- Lithgow -> Bathurst
 	(3, 6, 252),   -- Lithgow -> Dubbo
 	(4, 5, 56.9),  -- Bathurst -> Orange
-	(6, 7, 312)    -- Dubbo -> Singleton
+	(7, 6, 312)    -- Singleton -> Dubbo
 ;
 
 -- compute all pairs shortest path (APSP) 
