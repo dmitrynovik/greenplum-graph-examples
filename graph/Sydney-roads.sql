@@ -33,7 +33,7 @@ INSERT INTO road VALUES
 	(7, 6, 312)    -- Singleton -> Dubbo
 ;
 
--- compute all pairs shortest path (APSP) 
+-- Compute all pairs shortest path (APSP) 
 SELECT madlib.graph_apsp('city',             -- city table
                'id',                         -- city id column
                'road',                       -- road table
@@ -42,16 +42,16 @@ SELECT madlib.graph_apsp('city',             -- city table
                 );              
 				
 SELECT 
-		c1."name"  as from
-		,c2."name"  as to
-		,APSP.weight as distance
-		,via."name"  as via
+		c1."name"  AS from
+		,c2."name"  AS to
+		,APSP.weight AS distance
+		,via."name"  AS via
 		--,*
 	FROM all_pairs_shorted_paths_out APSP
-	join city c1 on c1.id = src
-	join city c2 on c2.id = dest
-	join city via on via.id = parent
-	where src != dest
+	JOIN city c1 ON c1.id = src
+	JOIN city c2 ON c2.id = dest
+	JOIN city via ON via.id = parent
+	WHERE src != dest
 	ORDER BY 1, 2;
 
 /*
