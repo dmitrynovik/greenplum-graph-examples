@@ -39,7 +39,15 @@ SELECT madlib.graph_apsp('city',             -- city table
                'all_pairs_shorted_paths_out' -- output table of APSP
                 );              
 				
-SELECT * FROM all_pairs_shorted_paths_out ORDER BY 1;
+SELECT 
+		c1."name"  as from,
+		c2."name"  as to,
+		APSP.weight as distance
+	FROM all_pairs_shorted_paths_out APSP
+	join city c1 on c1.id = src
+	join city c2 on c2.id = dest
+	where src != dest
+	ORDER BY weight;
 
 /*
 SELECT madlib.pagerank('city',     -- city table
