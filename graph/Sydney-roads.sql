@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS city,
     all_pairs_shorted_paths_out_summary,
 	avg_path_length_out,
 	avg_path_length_out_summary,
+	closeness,
 	degrees
 	;
   
@@ -59,13 +60,13 @@ SELECT
 	ORDER BY 1, 2;
 
 /*
--- AVG length:
+-- AVG path length:
 SELECT madlib.graph_avg_path_length('all_pairs_shorted_paths_out', 'avg_path_length_out');
 SELECT * FROM avg_path_length_out;
 */
 
 /*
--- Degrees
+-- Graph Degrees (in, out)
 SELECT madlib.graph_vertex_degrees(
     'city',      -- Vertex table
     'id',        -- Vertix id column (NULL means use default naming)
@@ -73,6 +74,14 @@ SELECT madlib.graph_vertex_degrees(
     'src=src, dest=dest, weight=weight',
     'degrees');        -- Output table of shortest paths
 SELECT * FROM degrees ORDER BY id;
+*/
+
+/*
+-- Graph closeness:
+-- https://madlib.apache.org/docs/latest/group__grp__graph__closeness.html
+-- inverse_sum_dist  | inverse_avg_dist  | sum_inverse_dist | k_degree
+SELECT madlib.graph_closeness('all_pairs_shorted_paths_out', 'closeness');
+SELECT * FROM closeness;
 */
 
 /*
