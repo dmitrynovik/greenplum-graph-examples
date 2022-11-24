@@ -5,7 +5,8 @@ DROP TABLE IF EXISTS city,
     all_pairs_shorted_paths_out,
     all_pairs_shorted_paths_out_summary,
 	avg_path_length_out,
-	avg_path_length_out_summary
+	avg_path_length_out_summary,
+	degrees
 	;
   
 
@@ -61,6 +62,17 @@ SELECT
 -- AVG length:
 SELECT madlib.graph_avg_path_length('all_pairs_shorted_paths_out', 'avg_path_length_out');
 SELECT * FROM avg_path_length_out;
+*/
+
+/*
+-- Degrees
+SELECT madlib.graph_vertex_degrees(
+    'city',      -- Vertex table
+    'id',        -- Vertix id column (NULL means use default naming)
+    'road',      -- Edge table
+    'src=src, dest=dest, weight=weight',
+    'degrees');        -- Output table of shortest paths
+SELECT * FROM degrees ORDER BY id;
 */
 
 /*
