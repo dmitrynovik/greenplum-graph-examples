@@ -64,6 +64,7 @@ SELECT * FROM avg_path_length_out;
 */
 
 /*
+-- Pagerank:
 SELECT madlib.pagerank('city',     -- city table
                'id',                 -- city id column
                'road',               -- road table
