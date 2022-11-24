@@ -3,7 +3,10 @@ DROP TABLE IF EXISTS city,
 	pagerank_out,
     pagerank_out_summary,
     all_pairs_shorted_paths_out,
-    all_pairs_shorted_paths_out_summary;
+    all_pairs_shorted_paths_out_summary,
+	avg_path_length_out,
+	avg_path_length_out_summary
+	;
   
 
 CREATE TABLE city(id INTEGER primary KEY, name VARCHAR(31) not null); 
@@ -53,6 +56,12 @@ SELECT
 	JOIN city via ON via.id = parent
 	WHERE src != dest
 	ORDER BY 1, 2;
+
+/*
+-- AVG length:
+SELECT madlib.graph_avg_path_length('all_pairs_shorted_paths_out', 'avg_path_length_out');
+SELECT * FROM avg_path_length_out;
+*/
 
 /*
 SELECT madlib.pagerank('city',     -- city table
